@@ -1,18 +1,18 @@
 /*
  * Name: Nikhil Ranjan Nayak
  * Regd No: 1641012040
- * Desc: Custom queue using array
+ * Desc: Queue using array
  */
-package Example;
+package ProgrammingProjects;
 
-public class CustomQueue {
+public class Queue {
 	private int maxSize;
 	private long[] queArray;
 	private int front;
 	private int rear;
 	private int nItems;
 
-	public CustomQueue(int size) {
+	public Queue(int size) {
 		maxSize = size;
 		queArray = new long[maxSize];
 		front = 0;
@@ -25,8 +25,9 @@ public class CustomQueue {
 			System.out.println("Overflow");
 			return;
 		}
-		rear++;
-		queArray[rear] = j;
+		if(rear == maxSize - 1)
+			rear = -1;
+		queArray[++rear] = j;
 		nItems++;
 	}
 
@@ -35,10 +36,15 @@ public class CustomQueue {
 			System.out.println("Underflow");
 			return 0;
 		}
-		long temp = queArray[front];
-		front++;
+		long temp = queArray[front++];
+		if(front == maxSize)
+			front = 0;
 		nItems--;
 		return temp;
+	}
+
+	public long peekFront() {
+		return queArray[front];
 	}
 
 	public boolean isEmpty() {
@@ -58,9 +64,19 @@ public class CustomQueue {
 	}
 
 	public void display() {
-		for(int i = front; i <= rear; i++) {
-			System.out.print(queArray[i] + " ");
+		if(isEmpty()) {
+			System.out.println("Queue is Empty");
+		} else if(rear >= front) {
+			for(int i = front; i <= rear; i++) {
+				System.out.print(queArray[i] + " ");
+			}
+			System.out.println();
+		} else if(front <= rear) {
+			for(int i = rear; i <= front; i++) {
+				System.out.print(queArray[i] + " ");
+			}
+			System.out.println();
 		}
-		System.out.println();
 	}
+
 }

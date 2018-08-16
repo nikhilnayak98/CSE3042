@@ -5,17 +5,12 @@
  */
 package Example;
 
-import java.util.Scanner;
-
 public class CircularQueueApp {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int size;
-		size = 5;
+		int size = 5;
 		CircularQueue circularQueue = new CircularQueue(size);
-
-		System.out.println();
+		
 		circularQueue.insert(50);
 		circularQueue.insert(60);
 		circularQueue.insert(70);
@@ -49,6 +44,7 @@ public class CircularQueueApp {
 		circularQueue.remove();
 		circularQueue.remove();
 		circularQueue.remove();
+		circularQueue.display();
 	}
 
 }

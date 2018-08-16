@@ -49,7 +49,6 @@ public class CircularQueue {
 		}
 		else {
 			long temp = queArray[front];
-			queArray[front] = -1;
 			front++;
 			nItems--;
 		}
@@ -60,13 +59,15 @@ public class CircularQueue {
 	}
 
 	public boolean isEmpty() {
-		if(nItems == 0)
+		if(front == -1 && rear == -1)
 			return true;
 		return false;
 	}
 
 	public boolean isFull() {
-		if(nItems == maxSize)
+		/*if((front == 0 && rear == maxSize - 1) || (front == rear + 1))
+			return true;*/
+		if(rear == maxSize - 1)
 			return true;
 		return false;
 	}
@@ -74,13 +75,26 @@ public class CircularQueue {
 	public int size() {
 		return nItems;
 	}
-	
+
 	public void display() {
-		for(int i = 0; i < maxSize; i++) {
-			if(queArray[i] != -1)
+		if(isEmpty())
+			System.out.println("Queue is Empty!");
+		else if(rear < front) {
+			
+			for(int i = front; i < maxSize; i++)
 				System.out.print(queArray[i] + " ");
+			
+			for(int i = 0; i <= rear; i++)
+				System.out.print(queArray[i] + " ");
+			
+			System.out.println();
+		}  else if(rear > front) {
+			
+			for(int i = front; i <= rear; i++)
+				System.out.print(queArray[i] + " ");
+			
+			System.out.println();
 		}
-		System.out.println();
 	}
 
 }
