@@ -17,6 +17,7 @@ public class QueueApp {
 		queue.insert(70);
 		queue.insert(80);
 		queue.display();
+		queue.displayRev();
 		
 		queue.insert(90);
 		queue.display();

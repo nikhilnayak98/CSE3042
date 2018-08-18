@@ -3,7 +3,7 @@
  * Regd No: 1641012040
  * Desc: Circular Queue
  */
-package Example;
+package ProgrammingProjects;
 
 public class CircularQueue {
 	private int maxSize;
@@ -53,23 +53,20 @@ public class CircularQueue {
 			nItems--;
 		}
 	}
-	
+
 	public void insertLeft(long j) {
-		if(front == -1)
-			front++;
-		else if((front == 0 && rear == maxSize - 1) || (front == rear + 1)) {
+		if(isFull()) {
 			System.out.println("Overflow");
-			return;
-		} else
+		} else if(front > 0)
 			front--;
 		queArray[front] = j;
 		nItems++;
 	}
-	
+
 	public void insertRight(long j) {
 		if(front == -1 && rear == -1)
 			front++;
-		else if((front == 0 && rear == maxSize - 1) || (front == rear + 1)) {
+		else if(isFull()) {
 			System.out.println("Overflow");
 			return;
 		}
@@ -80,21 +77,23 @@ public class CircularQueue {
 		queArray[rear] = j;
 		nItems++;
 	}
-	
+
 	public void removeLeft() {
 		if(isEmpty()) {
 			System.out.println("Underflow");
 			return;
 		}
 		front++;
+		nItems--;
 	}
-	
+
 	public void removeRight() {
 		if(isEmpty()) {
 			System.out.println("Underflow");
 			return;
 		}
 		rear--;
+		nItems--;
 	}
 
 
@@ -109,9 +108,9 @@ public class CircularQueue {
 	}
 
 	public boolean isFull() {
-		/*if((front == 0 && rear == maxSize - 1) || (front == rear + 1))
-			return true;*/
-		if(rear == maxSize - 1)
+		if((front == 0 && rear == maxSize - 1) || (front == rear + 1))
+			return true;
+		else if(rear == maxSize - 1)
 			return true;
 		return false;
 	}
@@ -119,7 +118,7 @@ public class CircularQueue {
 	public int size() {
 		return nItems;
 	}
-	
+
 	public void insertDeQueue(long item) {
 		int j;
 		if(nItems == 0)
@@ -140,19 +139,19 @@ public class CircularQueue {
 		if(isEmpty())
 			System.out.println("Queue is Empty!");
 		else if(rear < front) {
-			
+
 			for(int i = front; i < maxSize; i++)
 				System.out.print(queArray[i] + " ");
-			
+
 			for(int i = 0; i <= rear; i++)
 				System.out.print(queArray[i] + " ");
-			
+
 			System.out.println();
 		}  else if(rear > front) {
-			
+
 			for(int i = front; i <= rear; i++)
 				System.out.print(queArray[i] + " ");
-			
+
 			System.out.println();
 		}
 	}

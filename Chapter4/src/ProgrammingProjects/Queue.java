@@ -78,5 +78,21 @@ public class Queue {
 			System.out.println();
 		}
 	}
+	
+	public void displayRev() {
+		if(isEmpty()) {
+			System.out.println("Queue is Empty");
+		} else if(rear >= front) {
+			for(int i = rear; i >= front; i--) {
+				System.out.print(queArray[i] + " ");
+			}
+			System.out.println();
+		} else if(front <= rear) {
+			for(int i = front; i >= rear; i--) {
+				System.out.print(queArray[i] + " ");
+			}
+			System.out.println();
+		}
+	}
 
 }
