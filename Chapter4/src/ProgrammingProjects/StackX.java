@@ -19,18 +19,16 @@ public class StackX
 		nItems = 0;
 	}
 
-	public void push(int j) {
+	public void pushTop(int j) {
+		if(isFull()) {
+			System.out.println("Overflow");
+			return;
+		}
 		top++;
 		stackArray[top] = j;
 	}
-	
-	public void pushDown(int j) {
-		if(top < (maxSize - 1))
-			for(int i = top + 1; i > 0; i--)
-				stackArray[i] = stackArray[i - 1];
-	}
 
-	public long pop() {
+	public long popTop() {
 		if(isEmpty()) {
 			System.out.println("Underflow");
 			return 0;
@@ -43,7 +41,9 @@ public class StackX
 			System.out.println("Underflow");
 			return;
 		}
-		
+		for(int i = 0; i <= top; i++)
+			stackArray[i] = stackArray[i + 1];
+		top--;
 	}
 
 	public long peek() {
@@ -60,7 +60,8 @@ public class StackX
 	
 	public void display() {
 		for(int i = top; i >= 0; i--)
-			System.out.println(stackArray[top]);
+			System.out.println(stackArray[i]);
+		System.out.println();
 	}
 
 }

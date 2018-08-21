@@ -11,10 +11,15 @@ public class StackApp {
 		int size = 5;
 		StackX stackX = new StackX(size);
 		
-		stackX.push(50);
-		stackX.pushDown(100);
+		stackX.pushTop(50);
+		stackX.pushTop(40);
+		stackX.pushTop(60);
+		stackX.pushTop(20);
 		stackX.display();
-
+		stackX.popDown();
+		stackX.display();
+		stackX.popTop();
+		stackX.display();
 	}
 
 }
