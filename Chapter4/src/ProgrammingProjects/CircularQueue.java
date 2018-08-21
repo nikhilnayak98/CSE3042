@@ -57,7 +57,12 @@ public class CircularQueue {
 	public void insertLeft(long j) {
 		if(isFull()) {
 			System.out.println("Overflow");
-		} else if(front > 0)
+		} else if(rear < (maxSize - 1)) {
+			for(int i = rear + 1; i > front; i--)
+				queArray[i] = queArray[i - 1];
+				rear++;
+		}
+		if(front > 0)
 			front--;
 		queArray[front] = j;
 		nItems++;
@@ -153,6 +158,9 @@ public class CircularQueue {
 				System.out.print(queArray[i] + " ");
 
 			System.out.println();
+		} else if(rear >= front) {
+			for(int i = front; i <= rear; i++)
+				System.out.println(queArray[i] + " ");
 		}
 	}
 

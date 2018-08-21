@@ -12,39 +12,8 @@ public class CircularQueueApp {
 		CircularQueue circularQueue = new CircularQueue(size);
 		
 		circularQueue.insert(50);
-		circularQueue.insert(60);
-		circularQueue.insert(70);
-		circularQueue.insert(80);
-
-		circularQueue.display();
-		circularQueue.insert(90);
-		
-		circularQueue.display();
-		circularQueue.remove();
-		
-		circularQueue.display();
-		circularQueue.insert(45);
-		
-		circularQueue.display();
-		circularQueue.insert(100);
-		
-		circularQueue.display();
-		
-		circularQueue.insert(102);
-		
-		circularQueue.remove();
-		circularQueue.insert(102);
-		
-		circularQueue.insert(110);
-		circularQueue.display();
-		
-		circularQueue.remove();
-		circularQueue.remove();
-		circularQueue.remove();
-		circularQueue.remove();
-		circularQueue.remove();
-		circularQueue.remove();
-		
+		circularQueue.insertLeft(100);
+		circularQueue.insertRight(200);
 		circularQueue.display();
 	}
 
