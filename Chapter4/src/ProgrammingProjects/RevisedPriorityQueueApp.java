@@ -14,10 +14,15 @@ public class RevisedPriorityQueueApp {
 		revisedPriorityQueue.insert(10);
 		revisedPriorityQueue.insert(40);
 		revisedPriorityQueue.insert(20);
-		while(!revisedPriorityQueue.isEmpty()) {
-			long item = revisedPriorityQueue.remove();
-			System.out.print(item + " ");
-		}
-		System.out.println();
+		revisedPriorityQueue.display();
+		
+		revisedPriorityQueue.remove();
+		revisedPriorityQueue.display();
+		
+		revisedPriorityQueue.insert(120);
+		revisedPriorityQueue.display();
+		
+		revisedPriorityQueue.remove();
+		revisedPriorityQueue.display();
 	}
 }

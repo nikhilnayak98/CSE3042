@@ -62,6 +62,8 @@ public class CircularQueue {
 				queArray[i] = queArray[i - 1];
 				rear++;
 		}
+		if(rear == front)
+			insertRight(j);
 		if(front > 0)
 			front--;
 		queArray[front] = j;

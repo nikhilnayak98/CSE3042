@@ -14,27 +14,28 @@ public class RevisedPriorityQueue {
 	public RevisedPriorityQueue(int s) {
 		maxSize = s;
 		queArray = new long[maxSize];
-		nItems = 0;
+		nItems = -1;
 	}
 
 	public void insert(long item) {
-		int j;
-		if(nItems == 0)
-			queArray[nItems++] = item;
-		else {
-			for(j = nItems - 1; j >= 0; j--) {
-				if(item > queArray[j])
-					queArray[j + 1] = queArray[j];
-				else
-					break;
-			}
-			queArray[j + 1] = item;
-			nItems++;
+		nItems++;
+		if(isFull()) {
+			System.out.println("Overflow");
+			return;
 		}
+		queArray[nItems] = item;
 	}
 
-	public long remove() {
-		return queArray[--nItems];
+	public void remove() {
+		int min = 0;
+		for(int i = 0; i <= nItems; i++) {
+			if(queArray[i] < queArray[min])
+				min = i;
+		}
+		System.out.println("Deleted element - " + queArray[min]);
+		for(int i = min; i < nItems ; i++)
+			queArray[i] = queArray[i + 1];
+		nItems--;
 	}
 	
 	public long peekMin() {
@@ -50,8 +51,10 @@ public class RevisedPriorityQueue {
 	}
 	
 	public void display() {
-		for(int i = 0; i < maxSize; i++)
+		System.out.println();
+		for(int i = 0; i <= nItems; i++)
 			System.out.println(queArray[i] + " ");
+		System.out.println();
 	}
 	
 }
