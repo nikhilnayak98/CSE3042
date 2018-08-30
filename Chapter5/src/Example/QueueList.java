@@ -14,7 +14,7 @@ public class QueueList {
 		last = null;
 	}
 
-	public void insertLast(int iData, double dData) {
+	public void insert(int iData, double dData) {
 		Link newLink = new Link(iData, dData);
 		if(isEmpty())
 			first = newLink;
@@ -23,13 +23,22 @@ public class QueueList {
 		last = newLink;
 	}
 
-	public void removeFirst() {
-		System.out.println("Deleted Node - ");
-		first.displayLink();
-		System.out.println();
-		if(first.next == null)
+	public void remove() {
+		if(isEmpty())
+			System.out.println("Queue is Empty!");
+		else if(first.next == null)
 			last = null;
-		first = first.next;
+		else {
+			Link current = first.next, tCurrent = first;
+			int min = current.iData;
+			while(current != null) {
+				if(current.iData <= min) {
+					min = current.iData;
+					tCurrent = current;
+				}
+				current = current.next;
+			}
+		}
 	}
 
 	public boolean isEmpty() {

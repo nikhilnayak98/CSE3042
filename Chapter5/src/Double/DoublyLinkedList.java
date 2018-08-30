@@ -1,22 +1,27 @@
 /*
  * Name: Nikhil Ranjan Nayak
  * Regd No: 1641012040
- * Desc: Singly Linked List
+ * Desc: Doubly Linked List
  */
-package Example;
+package Double;
 
-public class LinkedList {
+public class DoublyLinkedList {
 
 	private Link first;
+	private Link last;
 
-	public LinkedList() {
+	public DoublyLinkedList() {
 		first = null;
+		last = null;
 	}
 
 	public void insertFirst(int iData, double dData) {
 		Link newLink = new Link(iData, dData);
+		if(isEmpty())
+			last = newLink;
+		else
+			first.previous = newLink;
 		newLink.next = first;
-		first = newLink;
 	}
 
 	public void insertLast(int iData, double dData) {
@@ -27,6 +32,14 @@ public class LinkedList {
 			current = current.next;
 		}
 		current.next = newLink;
+		
+		if( isEmpty())
+			first = newLink;
+		else {
+			last.next = newLink;
+			newLink.previous = last;
+		}
+		last = newLink;
 	}
 
 	public Link deleteFirst() {

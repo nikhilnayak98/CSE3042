@@ -9,12 +9,18 @@ public class QueueListApp {
 	
 	public static void main(String[] args) {
 		QueueList queueList = new QueueList();
-		queueList.insertLast(55, 66.9);
-		queueList.insertLast(54, 90.3);
-		queueList.insertLast(33, 1.56);
-		queueList.insertLast(5225, 21.9);
+		queueList.insert(55, 66.9);
+		queueList.insert(54, 90.3);
+		queueList.insert(33, 1.56);
+		queueList.insert(5225, 21.9);
 		queueList.displayList();
-		queueList.removeFirst();
+		queueList.remove();
+		queueList.displayList();
+		queueList.remove();
+		queueList.displayList();
+		queueList.insert(100, 20.1);
+		queueList.displayList();
+		queueList.remove();
 		queueList.displayList();
 	}
 }
