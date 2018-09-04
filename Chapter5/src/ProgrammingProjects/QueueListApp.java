@@ -3,7 +3,7 @@
  * Regd No: 1641012040
  * Desc: Queue Linked List App
  */
-package Example;
+package ProgrammingProjects;
 
 public class QueueListApp {
 	

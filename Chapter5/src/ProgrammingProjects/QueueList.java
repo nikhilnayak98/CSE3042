@@ -3,7 +3,7 @@
  * Regd No: 1641012040
  * Desc: Queue Linked List Model
  */
-package Example;
+package ProgrammingProjects;
 
 public class QueueList {
 	private Link first;
@@ -28,7 +28,20 @@ public class QueueList {
 			System.out.println("Queue is Empty!");
 		else if(first.next == null)
 			last = null;
-		first = first.next;
+		else {
+			Link current = first, tCurrent = first;
+			int min = current.iData;
+			while(current.next != null) {
+				if(current.iData <= min) {
+					min = current.iData;
+					tCurrent = current;
+				}
+				current = current.next;
+			}
+			System.out.println("Temp ------ ");
+			tCurrent.displayLink();
+			System.out.println();
+		}
 	}
 
 	public boolean isEmpty() {
