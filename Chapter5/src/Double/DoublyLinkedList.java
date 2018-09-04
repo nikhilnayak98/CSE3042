@@ -26,14 +26,7 @@ public class DoublyLinkedList {
 
 	public void insertLast(int iData, double dData) {
 		Link newLink = new Link(iData, dData);
-		Link current = first;
-		newLink.next = null;
-		while(current.next != null) {
-			current = current.next;
-		}
-		current.next = newLink;
-		
-		if( isEmpty())
+		if(isEmpty())
 			first = newLink;
 		else {
 			last.next = newLink;
@@ -42,10 +35,15 @@ public class DoublyLinkedList {
 		last = newLink;
 	}
 
-	public Link deleteFirst() {
+	public void deleteFirst() {
 		Link temp = first;
+		if(first.next == null)
+			last = null;
+		else
+			first.next.previous = null;
 		first = first.next;
-		return temp;
+		System.out.println("Deleted elenment - ");
+		temp.displayLink();
 	}
 
 	public void deleteLast() {
@@ -83,7 +81,7 @@ public class DoublyLinkedList {
 	public void find(int key) {
 		Link current = first;
 		int pos = 0;
-		while(current.next != null) {
+		while(current != null) {
 			pos++;
 			if(current.iData == key) {
 				System.out.println("Found at pos - " + pos);
