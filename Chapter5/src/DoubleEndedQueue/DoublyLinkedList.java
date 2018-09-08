@@ -3,7 +3,7 @@
  * Regd No: 1641012040
  * Desc: Doubly Linked List
  */
-package Double;
+package DoubleEndedQueue;
 
 public class DoublyLinkedList {
 
@@ -116,6 +116,20 @@ public class DoublyLinkedList {
 		while(current != null) {
 			current.displayLink();
 			current = current.next;
+		}
+		System.out.println();
+	}
+	
+	public void displayFromLast() {
+		System.out.print("List (last->first): ");
+		Link current = last;
+		if(isEmpty()) {
+			System.out.println("List is Empty");
+			return;
+		}
+		while(current != null) {
+			current.displayLink();
+			current = current.previous;
 		}
 		System.out.println();
 	}

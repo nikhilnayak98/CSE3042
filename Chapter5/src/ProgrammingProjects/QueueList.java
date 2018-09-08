@@ -38,8 +38,6 @@ public class QueueList {
 				}
 				current = current.next;
 			}
-			System.out.println("Temp ------ ");
-			tCurrent.displayLink();
 			System.out.println();
 		}
 	}
