@@ -15,11 +15,22 @@ public class Prog5 {
 		int n = sc.nextInt();
 		System.out.println("Enter team size (k) - ");
 		int k = sc.nextInt();
-		System.out.println(n + "C" + k + " = ");
+		System.out.println(n);
+		System.out.println(" C");
+		System.out.println("  " + k);
+		showTeams(n, k);
 	}
-	
-	public static void showTeams() {
-		
+
+	public static void showTeams(int n, int k) {
+		System.out.println("Number of possible combinations = "
+				+ (factorial(n) / (factorial(n - k) * factorial(k))));
+	}
+
+	public static int factorial(int n) {
+		while(n != 0) {
+			return n * factorial(n - 1);
+		}
+		return 1;
 	}
 
 }
