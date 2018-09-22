@@ -15,14 +15,20 @@ public class Prog3 {
 		int x = sc.nextInt();
 		System.out.println("Enter y - ");
 		int y = sc.nextInt();
-		System.out.println(x + " ^ " + y + " = " + power(x, y));
+		power(x, y);
+		System.out.println(x + " ^ " + y + " = ");
 	}
 
-	public static int power(int x, int y) {
-		while(y != 0) {
-			return x * power(x, y - 1);
+	public static void power(int x, int y) {
+		while(y != 1) {
+			x *=  x;
+			y /= 2;
+			power(x, y);
 		}
-		return 1;
+		if(y == 1) {
+			System.out.println(x);
+			return;
+		}
 	}
 
 }
