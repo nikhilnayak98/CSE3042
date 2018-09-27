@@ -11,15 +11,22 @@ public class BinaryTreeApp {
 
 	public static void main(String[] args) {
 		Tree tree = new Tree();
-		tree.insert(10, 1.2);
-		tree.insert(5, 4.2);
-		tree.insert(3, 1234.2);
-		tree.insert(7, 45.2);
+		tree.insert(50, 1.2);
+		tree.insert(25, 2.0);
+		tree.insert(75, 45.3);
+		tree.insert(12, 2.5);
+		tree.insert(37, 5.7);
+		tree.insert(43, 7.2);
+		tree.insert(30, 0.3);
+		tree.insert(33, 2.3);
+		tree.insert(87, 34.2);
+		tree.insert(93, 2.11);
+		tree.insert(97, 3.333);
 		tree.displayTree();
-		tree.delete(7);
 		tree.traverse(1);
 		tree.traverse(2);
 		tree.traverse(3);
+		tree.delete(25);
 		tree.displayTree();
 	}
 }
@@ -106,7 +113,7 @@ class Tree {
 			if(current == null)
 				return false;
 		}
-		
+
 		if(current.leftChild == null && current.rightChild == null) {
 			if(current == root)
 				root = null;
@@ -114,8 +121,48 @@ class Tree {
 				parent.leftChild = null;
 			else
 				parent.rightChild = null;
+		} else if(current.rightChild == null)
+			if(current == root)
+				root = current.leftChild;
+			else if(isLeftChild)
+				parent.leftChild = current.leftChild;
+			else
+				parent.rightChild = current.leftChild;
+		else if(current.leftChild == null)
+			if(current == root)
+				root = current.rightChild;
+			else if(isLeftChild)
+				parent.leftChild = current.rightChild;
+			else
+				parent.rightChild = current.rightChild;
+		else {
+			 Node successor = getSuccessor(current);
+			 if(current == root)
+				 root = successor;
+			 else if(isLeftChild)
+				 parent.leftChild = successor;
+			 else
+				 parent.rightChild = successor;
+			 
+			 successor.leftChild = current.leftChild;
 		}
 		return true;
+	}
+	
+	private Node getSuccessor(Node delNode) {
+		Node successorParent = delNode;
+		Node successor = delNode;
+		Node current = delNode.rightChild;
+		while(current != null) {
+			successorParent = successor;
+			successor = current;
+			current = current.leftChild;
+		}
+		if(successor != delNode.rightChild) {
+			successorParent.leftChild = successor.rightChild;
+			successor.rightChild = delNode.rightChild;
+		}
+		return successor;
 	}
 
 	public void displayTree() {
