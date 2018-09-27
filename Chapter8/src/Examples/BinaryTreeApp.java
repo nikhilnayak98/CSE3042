@@ -11,21 +11,16 @@ public class BinaryTreeApp {
 
 	public static void main(String[] args) {
 		Tree tree = new Tree();
-		tree.insert(50, 1.2);
-		tree.insert(25, 4.2);
-		tree.insert(75, 1234.2);
-		tree.insert(12, 45.2);
-		tree.insert(37, 345.2);
-		tree.insert(43, 67.3);
-		tree.insert(30, 45.3);
-		tree.insert(33, 66.34);
-		tree.insert(87, 33.5);
-		tree.insert(93, 4.4);
-		tree.insert(97, 39.3);
+		tree.insert(10, 1.2);
+		tree.insert(5, 4.2);
+		tree.insert(3, 1234.2);
+		tree.insert(7, 45.2);
 		tree.displayTree();
+		tree.delete(7);
 		tree.traverse(1);
 		tree.traverse(2);
 		tree.traverse(3);
+		tree.displayTree();
 	}
 }
 
@@ -113,7 +108,12 @@ class Tree {
 		}
 		
 		if(current.leftChild == null && current.rightChild == null) {
-			
+			if(current == root)
+				root = null;
+			else if(isLeftChild)
+				parent.leftChild = null;
+			else
+				parent.rightChild = null;
 		}
 		return true;
 	}
@@ -142,7 +142,7 @@ class Tree {
 					localStack.push(null);
 					localStack.push(null);
 				}
-				for(int j = 0; j < (nBlanks*2 - 2); j++)
+				for(int j = 0; j < (nBlanks * 2 - 2); j++)
 					System.out.print(' ');
 			}
 			System.out.println();
