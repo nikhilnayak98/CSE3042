@@ -26,7 +26,7 @@ public class BinaryTreeApp {
 		tree.traverse(1);
 		tree.traverse(2);
 		tree.traverse(3);
-		tree.delete(25);
+		tree.delete(12);
 		tree.displayTree();
 	}
 }
@@ -202,13 +202,13 @@ class Tree {
 
 	public void traverse(int traverseType) {
 		switch(traverseType) {
-		case 1: System.out.print("\nPreorder traversal: ");
+		case 1: System.out.print("\nPreorder traversal(Root, Left, Right): ");
 		preOrder(root);
 		break;
-		case 2: System.out.print("\nInorder traversal: ");
+		case 2: System.out.print("\nInorder traversal(Left, Root, Right): ");
 		inOrder(root);
 		break;
-		case 3: System.out.print("\nPostorder traversal: ");
+		case 3: System.out.print("\nPostorder traversal(Left, Right, Root): ");
 		postOrder(root);
 		break;
 		}
