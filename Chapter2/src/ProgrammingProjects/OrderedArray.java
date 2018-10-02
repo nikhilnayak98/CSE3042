@@ -92,6 +92,27 @@ class OrdArray {
 		a[j] = value;
 		nElems++;
 	}
+	
+	public void insertBinary(long value) {
+		int l = 0, u = nElems - 1;
+		int j = 0;
+		while(true)
+		{
+			if(l > u)
+				break;
+			j = (l + u) / 2;
+			if(value > a[j]) {
+				l = j + 1;
+				j++;
+			}
+			else
+				u = j - 1;
+		}
+		for(int k = nElems; k > j; k--)
+			a[k] = a[k - 1];
+		a[j] = value;
+		nElems++;
+	}
 
 	public boolean delete(long value) {
 		int j = find(value);
