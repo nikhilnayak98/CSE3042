@@ -96,8 +96,7 @@ class OrdArray {
 	public void insertBinary(long value) {
 		int l = 0, u = nElems - 1;
 		int j = 0;
-		while(true)
-		{
+		while(true) {
 			if(l > u)
 				break;
 			j = (l + u) / 2;
