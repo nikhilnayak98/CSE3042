@@ -32,11 +32,5 @@ public class TriangleApp {
 		s = sc.next();
 		return s;
 	}
-
-	public static int getInt() {
-		Scanner sc = new Scanner(System.in);
-		String s = sc.next();
-		return Integer.parseInt(s);
-	}
-
+	
 }
