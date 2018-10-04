@@ -25,12 +25,5 @@ public class TriangleApp {
 		else
 			return (n + triangle(n - 1));
 	}
-
-	public static String getString() {
-		Scanner sc = new Scanner(System.in);
-		String s;
-		s = sc.next();
-		return s;
-	}
 	
 }
